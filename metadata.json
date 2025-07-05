@@ -1,0 +1,8 @@
+{
+  "name": "Vocabot Julio25",
+  "description": "Tu coach vocacional personal para explorar intereses, talentos y opciones de carrera.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "prompt": ""
+}
