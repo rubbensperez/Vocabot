@@ -43,20 +43,44 @@ function App() {
         <ErrorScreen />
         <Header />
 
+        {/* BOTÓN DE VOZ */}
+        <div style={{ textAlign: "center", marginTop: "1rem" }}>
+          <button
+            onClick={() => {
+              if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                console.log("✅ speechSynthesis está disponible");
+                const mensaje = new SpeechSynthesisUtterance("Hola, soy Vocabot desde Vercel");
+                window.speechSynthesis.cancel();
+                window.speechSynthesis.speak(mensaje);
+              } else {
+                console.warn("❌ speechSynthesis no está disponible.");
+              }
+            }}
+            style={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              backgroundColor: "#00E392",
+              color: "black",
+              border: "none",
+              borderRadius: "8px",
+              cursor: "pointer",
+            }}
+          >
+            Hablar Vercel
+          </button>
+        </div>
+
         {showUserConfig && <UserSettings />}
         <div className="streaming-console">
           <main>
             <div className="main-app-area">
               <KeynoteCompanion />
             </div>
-
-            <ControlTray></ControlTray>
+            <ControlTray />
           </main>
         </div>
       </LiveAPIProvider>
     </div>
   );
 }
-
-export default App;
 
